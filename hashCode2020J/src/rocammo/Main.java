@@ -47,23 +47,37 @@ public class Main {
 	}
 	
 	private static Library readFile(String path) throws IOException {
-		int[] index;
-		ArrayList<Integer> list = new ArrayList<Integer>();
 		BufferedReader br = new BufferedReader(new FileReader(path));
 
 		String line = br.readLine();
 		String[] header = line.split(" ");
-		int scoreToReach = Integer.parseInt(header[0]);
-		int arraySize = Integer.parseInt(header[1]);
+		
+		int numBooks = Integer.parseInt(header[0]);
+		int numLibraries =  Integer.parseInt(header[1]);
+		int scanningDays = Integer.parseInt(header[2]);
 
 //		Library library = new Library(...);
 
-		index = new int[arraySize];
+		int [] scores = new int[numBooks];
 		line = br.readLine();
 		String[] sizes = line.split(" ");
 		for (int i = 0; i < sizes.length; i++) {
-			index[i] = Integer.parseInt(sizes[i]);
-			list.add(index[i]);
+			scores[i] = Integer.parseInt(sizes[i]);
+		}
+		
+		int booksOfLibrary = 0;
+		
+		while ((line = br.readLine()) != null) {
+			String[] digits = line.split(" ");
+			for (int i = 0; i < digits.length; i++) {
+				
+			}
+			
+			line = br.readLine();
+			String[] digits2 = line.split(" ");
+			for (int i = 0; i < digits2.length; i++) {
+				
+			}
 		}
 
 //		library.fill(index);
