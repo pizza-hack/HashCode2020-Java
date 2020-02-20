@@ -59,7 +59,7 @@ public class Main {
 			line = br.readLine();
 			String[] digits2 = line.split(" ");
 			for (int i = 0; i < digits2.length; i++) {
-				library.books.add(Integer.parseInt(digits[i]));
+				library.books.add(Integer.parseInt(digits2[i]));
 			}
 			
 			problem.addLibrary(library);
