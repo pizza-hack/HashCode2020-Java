@@ -8,20 +8,6 @@ import java.io.IOException;
 import java.io.PrintStream;
 import java.util.ArrayList;
 
-class Book {
-	int id;
-	int score;
-}
-
-class Library {
-	ArrayList<Book> books;
-	int loadingTime;
-	
-	public Library() {
-		this.books = new ArrayList<Book>();
-	}
-}
-
 public class Main {
 	public static final String IN_1 = "in/a_example.txt";
 	public static final String IN_2 = "in/b_read_on.txt";
@@ -37,54 +23,51 @@ public class Main {
 	public static final String OUT_5 = "out/e_so_many_books.txt";
 	public static final String OUT_6 = "out/f_libraries_of_the_world.txt";
 	
-	public static void main(String[] args) {
-		Library l1 = readFile(IN_1);
-		Library l2 = readFile(IN_2);
-		Library l3 = readFile(IN_3);
-		Library l4 = readFile(IN_4);
-		Library l5 = readFile(IN_5);
-		Library l6 = readFile(IN_6);
+	public static void main(String[] args) throws IOException {
+//		Problem l1 = readFile(IN_1);
+		Problem l2 = readFile(IN_2);
+//		Problem l3 = readFile(IN_3);
+//		Problem l4 = readFile(IN_4);
+//		Problem l5 = readFile(IN_5);
+//		Problem l6 = readFile(IN_6);
+		
+		
 	}
 	
-	private static Library readFile(String path) throws IOException {
+	private static Problem readFile(String path) throws IOException {
 		BufferedReader br = new BufferedReader(new FileReader(path));
 
 		String line = br.readLine();
 		String[] header = line.split(" ");
 		
-		int numBooks = Integer.parseInt(header[0]);
-		int numLibraries =  Integer.parseInt(header[1]);
-		int scanningDays = Integer.parseInt(header[2]);
+		Problem problem = new Problem();
+		problem.daysInTotal = Integer.parseInt(header[2]);
 
-//		Library library = new Library(...);
-
-		int [] scores = new int[numBooks];
 		line = br.readLine();
 		String[] sizes = line.split(" ");
 		for (int i = 0; i < sizes.length; i++) {
-			scores[i] = Integer.parseInt(sizes[i]);
+			problem.addBook(new Book(Integer.parseInt(sizes[i])));
 		}
 		
-		int booksOfLibrary = 0;
+		Library library = new Library();
 		
 		while ((line = br.readLine()) != null) {
 			String[] digits = line.split(" ");
-			for (int i = 0; i < digits.length; i++) {
-				
-			}
+			library.timeToSignUp = Integer.parseInt(digits[1]);
+			library.booksPerDay = Integer.parseInt(digits[2]);
 			
 			line = br.readLine();
 			String[] digits2 = line.split(" ");
 			for (int i = 0; i < digits2.length; i++) {
-				
+				library.books.add(Integer.parseInt(digits[i]));
 			}
+			
+			problem.addLibrary(library);
 		}
-
-//		library.fill(index);
 
 		br.close();
 
-//		return library;
+		return problem;
 	}
 	
 	public static void writeFile(String path, Library library) throws FileNotFoundException {
