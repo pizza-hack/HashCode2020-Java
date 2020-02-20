@@ -31,7 +31,7 @@ public class Main {
 //		Problem l5 = readFile(IN_5);
 //		Problem l6 = readFile(IN_6);
 		
-		
+		l2.libraries.get(0).getPoints(l2.daysInTotal);
 	}
 	
 	private static Problem readFile(String path) throws IOException {
@@ -59,7 +59,7 @@ public class Main {
 			line = br.readLine();
 			String[] digits2 = line.split(" ");
 			for (int i = 0; i < digits2.length; i++) {
-				library.books.add(Integer.parseInt(digits2[i]));
+				library.books.add(problem.books.get(Integer.parseInt(digits2[i])));
 			}
 			
 			problem.addLibrary(library);
