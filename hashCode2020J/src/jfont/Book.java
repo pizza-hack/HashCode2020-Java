@@ -7,8 +7,13 @@ public class Book {
 	public int points;
 	public ArrayList<Integer> libraries;
 	
-	public Book() {
-		// TODO Auto-generated constructor stub
+	public Book(int points) {
+		libraries = new ArrayList<Integer>();
+		this.points = points;
+	}
+	
+	public void addLibrary(int idLibrary) {
+		libraries.add(idLibrary);
 	}
 	
 }
