@@ -9,11 +9,12 @@ public class Library {
 	int booksPerDay;
 	ArrayList<Book> allBooks;
 	
-	public int daysToComplete() {
+	public float daysToComplete() {
+		long total = timeToSignUp;
 		
+		total += books.size()/booksPerDay;
 		
-		
-		return 0;
+		return total;
 	}
 	
 	public long totalPoints() {
