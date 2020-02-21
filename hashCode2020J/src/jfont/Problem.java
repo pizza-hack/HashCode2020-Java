@@ -43,7 +43,7 @@ public class Problem {
 			
 			Library best = Collections.max(libraries, new Comparator<Library>() {
 				public int compare(Library l1, Library l2) {
-					return (int) (l1.lastPointsCalculated - l2.lastPointsCalculated);
+					return (int) (l1.getRatio() - l2.getRatio());
 				};
 			});
 			
@@ -56,6 +56,7 @@ public class Problem {
 				for(Library l : libraries) {
 					l.books.removeAll(toRemove);
 				}
+				
 			}
 			restDays -= best.timeToSignUp;
 			
@@ -65,14 +66,16 @@ public class Problem {
 	
 	public void writeSolution(PrintStream out) {
 		out.println(selectedLibraries.size());
-		
+		long points = 0;
 		for(int i=0;i<selectedLibraries.size();i++) {
 			Library l = selectedLibraries.get(i);
 			out.println(l.id+" "+l.selected.size());
 			for(int b=0;b<l.selected.size();b++) {
 				out.print(l.selected.get(b).id+" ");
+				points += l.selected.get(b).points;
 			}
 			out.println();
 		}
+		System.out.println(points);
 	}
 }

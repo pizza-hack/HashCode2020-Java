@@ -33,16 +33,21 @@ public class Main {
 		Problem l6 = readFile(IN_6);
 		
 		l1.solve();
-		l1.writeSolution(new PrintStream(new File(OUT_1)));
 		l2.solve();
-		l2.writeSolution(new PrintStream(new File(OUT_2)));
 		l3.solve();
-		l3.writeSolution(new PrintStream(new File(OUT_3)));
 		l4.solve();
-		l4.writeSolution(new PrintStream(new File(OUT_4)));
 		l5.solve();
-		l5.writeSolution(new PrintStream(new File(OUT_5)));
 		l6.solve();
+		l1.writeSolution(new PrintStream(new File(OUT_1)));
+		
+		l2.writeSolution(new PrintStream(new File(OUT_2)));
+		
+		l3.writeSolution(new PrintStream(new File(OUT_3)));
+		
+		l4.writeSolution(new PrintStream(new File(OUT_4)));
+		
+		l5.writeSolution(new PrintStream(new File(OUT_5)));
+		
 		l6.writeSolution(new PrintStream(new File(OUT_6)));
 	}
 	
