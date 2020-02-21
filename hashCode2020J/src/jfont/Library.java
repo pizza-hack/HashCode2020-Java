@@ -1,13 +1,27 @@
 package jfont;
 
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
 
 public class Library {
 
 	int timeToSignUp;
-	ArrayList<Integer> books;
+	ArrayList<Book> books;
+	ArrayList<Book> selected;
 	int booksPerDay;
-	ArrayList<Book> allBooks;
+	int id;
+	long lastPointsCalculated;
+	
+	public Library(int id) {
+		this.id = id;
+		this.books = new ArrayList<Book>();
+		this.selected = new ArrayList<Book>();
+	}
+	
+	public void sort() {
+		Collections.sort(books);
+	}
 	
 	public float daysToComplete() {
 		long total = timeToSignUp;
@@ -17,12 +31,44 @@ public class Library {
 		return total;
 	}
 	
-	public long totalPoints() {
-		long total = 0;
-		for(Integer i : books) {
-			total += allBooks.get(i).points;
+	public ArrayList<Book> selectLibrary(int daysLeft) {
+        
+        int maxBooks = (daysLeft - this.timeToSignUp) * booksPerDay;
+        
+        int currentBook = 0;
+        
+        while(currentBook < books.size() && selected.size()<maxBooks)
+		{
+			selected.add(books.get(currentBook));
+			currentBook++;
 		}
-		return total;
+        
+		System.out.println("MaxBooks: "+maxBooks+" - Selected:"+selected.size()+" - booksInLibrary"+books.size()+" - points last:"+lastPointsCalculated);
+		
+        return selected;
+    }
+	
+	
+	public long getPoints(int daysLeft) {
+		int days = daysLeft - timeToSignUp;
+		int maximumBooks = booksPerDay * days;
+		
+		long points = 0;
+		int currentBook = 0;
+		while(currentBook < maximumBooks && currentBook < books.size()) {
+			
+			points += books.get(currentBook).points;
+			currentBook++;
+			
+		}
+		lastPointsCalculated = points;
+		return points;
+	}
+	
+	@Override
+	public String toString() {
+		// TODO Auto-generated method stub
+		return "LP: "+lastPointsCalculated;
 	}
 	
 }
